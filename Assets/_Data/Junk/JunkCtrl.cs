@@ -4,34 +4,18 @@ using UnityEngine;
 
 public class JunkCtrl : KienroroMonobehavier
 {
-    [SerializeField] protected JunkSpawner junkSpawner;
-
-    public JunkSpawner JunkSpawner
-    {
-        get => junkSpawner;
-    }
-
-    [SerializeField] protected SpawnPoint spawnPoints;
-    public SpawnPoint SpawnPoint { get => spawnPoints; }
-
+    [SerializeField] protected Transform model;
+    public Transform Model { get=>model; private set=> model = value; }
     protected override void LoadComponents()
     {
-        // base.LoadComponents();
-        this.LoadJunkSpawner();
-        this.LoadPoints();
+        base.LoadComponents();
+        this.LoadModel();
     }
 
-    protected virtual void  LoadJunkSpawner()
+    protected virtual void LoadModel()
     {
-        if (this.junkSpawner != null) return;
-        this.junkSpawner = GetComponent<JunkSpawner>();
-        Debug.Log($"{transform.name} : LoadJunkSpawner{gameObject}");
-    }
-    
-    private void LoadPoints()
-    {
-        if(this.spawnPoints != null)return;
-        this.spawnPoints = Transform.FindObjectOfType<JunkSpawnPoint>();
-        Debug.Log($"{transform.name}: LoadPoints{gameObject}");
+        if (this.model != null) return;
+        this.model = transform.Find("Model");
+        Debug.Log($"{transform.name}: LoadModel{gameObject}");
     }
 }

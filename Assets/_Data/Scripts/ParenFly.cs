@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParenFly : KienroroMonobehavier
+public abstract class ParenFly : KienroroMonobehavier
 {
     [SerializeField] protected float moveSpeed = 1;
     [SerializeField] protected Vector3 direction = Vector3.right;
@@ -11,5 +12,10 @@ public class ParenFly : KienroroMonobehavier
     void Update()
     {
         transform.parent.Translate(this.direction * moveSpeed * Time.deltaTime);
+    }
+
+    protected virtual void OnEnable()
+    {
+        
     }
 }
