@@ -8,8 +8,10 @@ public abstract class Spawner : KienroroMonobehavier
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected Transform holder;
     [SerializeField] protected List<Transform> poolObj;
-    
-    
+    [SerializeField] protected int spawnerCount = 0;
+
+    public int SpawnerCount => spawnerCount;
+
 
     protected override void LoadComponents()
     {
@@ -67,6 +69,7 @@ public abstract class Spawner : KienroroMonobehavier
     {
         this.poolObj.Add(obj);
         obj.gameObject.SetActive(false);
+        spawnerCount--;
     }
 
     private Transform GetObjectFromPool(Transform prefab)
@@ -84,6 +87,7 @@ public abstract class Spawner : KienroroMonobehavier
 
         result = Instantiate(prefab);
         result.name = prefab.name;
+        spawnerCount++;
         return result;
     }
 

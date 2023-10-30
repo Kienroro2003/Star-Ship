@@ -10,7 +10,7 @@ public class JunkDespawn : DespawnByDistance
              this.disLimit = 50f;
          }
 
-    protected override void DespawnObj()
+    public override void DespawnObj()
     {
         JunkSpawner.Instance.Despawn(transform.parent);
     }

@@ -7,8 +7,25 @@ namespace _Data.Damege
     {
         [SerializeField] protected float hp = 1;
         [SerializeField] protected float maxHp = 10;
+        [SerializeField] protected SphereCollider sphereCollider;
+        [SerializeField] protected bool isDead = false;
+        
+        protected override void LoadComponents()
+        {
+            base.LoadComponents();
+            this.LoadCollider();
+        }
 
-        private void Start()
+        protected virtual void LoadCollider()
+        {
+            if (this.sphereCollider != null) return;
+            this.sphereCollider = GetComponent<SphereCollider>();
+            this.sphereCollider.isTrigger = true;
+            this.sphereCollider.radius = 0.6f;
+            Debug.Log($"{transform.name}: LoadCollider{gameObject}");
+        }
+
+        private void OnEnable()
         {
             this.Reborn();
         }
@@ -17,6 +34,7 @@ namespace _Data.Damege
         {
             this.hp -= damage;
             if (this.hp < 0) this.hp = 0;
+            this.CheckIsDead();
         }
 
         public virtual void Reborn()
@@ -33,6 +51,18 @@ namespace _Data.Damege
         public virtual bool IsDead()
         {
             return this.hp <= 0;
+        }
+        
+        protected virtual void CheckIsDead()
+        {
+            if (!this.IsDead()) return;
+            this.isDead = true;
+            this.OnDead();
+        }
+
+        protected virtual void OnDead()
+        {
+            //For override
         }
     }
 }

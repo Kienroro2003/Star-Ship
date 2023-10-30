@@ -17,7 +17,7 @@ public abstract class Despawn : KienroroMonobehavier
         this.DespawnObj();
     }
     
-    protected virtual void DespawnObj()
+    public virtual void DespawnObj()
     {
         Destroy(this.transform.parent.gameObject);
     }
