@@ -22,7 +22,26 @@ namespace _Data.Junk
 
         protected override void OnDead()
         {
+            this.OnDeadFX();
             this.junkCtrl.Despawn.DespawnObj();
+        }
+
+        protected virtual void OnDeadFX()
+        {
+            string fxName = this.GetOnDeadFXName();
+            Transform fxOnDead = FXSpawner.Instance.Spawn(fxName, transform.position, transform.rotation);
+            fxOnDead.gameObject.SetActive(true);
+        }
+
+        protected virtual string GetOnDeadFXName()
+        {
+            return FXSpawner.Instance.smokeOne;
+        }
+
+        public override void Reborn()
+        {
+            this.maxHp = this.junkCtrl.JunkSo.hpMax;
+            base.Reborn();
         }
     }
 }

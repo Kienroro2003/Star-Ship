@@ -36,7 +36,21 @@ namespace _Data.Bullet
 
         protected virtual void OnTriggerEnter(Collider other)
         {
+            Debug.Log($"Name: {other.transform.name}");
             this.bulletCtrl.DamageSender.Send(other.transform);
+            this.CreateImpactFX();
+        }
+
+        protected virtual void CreateImpactFX()
+        {
+            string fxName = this.GetImpactName();
+            Transform impactFX = ImpactSpawner.Instance.Spawn(fxName, transform.position, transform.rotation);
+            impactFX.gameObject.SetActive(true);
+        }
+
+        protected virtual string GetImpactName()
+        {
+            return ImpactSpawner.Instance.impactOne;
         }
     }
 }

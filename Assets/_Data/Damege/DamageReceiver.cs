@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Data.Damege
 {
-    public class DamageReceiver : KienroroMonobehavier
+    public abstract class DamageReceiver : KienroroMonobehavier
     {
         [SerializeField] protected float hp = 1;
         [SerializeField] protected float maxHp = 10;
@@ -60,9 +60,6 @@ namespace _Data.Damege
             this.OnDead();
         }
 
-        protected virtual void OnDead()
-        {
-            //For override
-        }
+        protected abstract void OnDead();
     }
 }

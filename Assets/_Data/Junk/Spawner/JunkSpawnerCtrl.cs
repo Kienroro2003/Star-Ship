@@ -11,6 +11,8 @@ public class JunkSpawnerCtrl : KienroroMonobehavier
         get => junkSpawner;
     }
 
+    
+
     [SerializeField] protected SpawnPoint spawnPoints;
     public SpawnPoint SpawnPoint { get => spawnPoints; }
 

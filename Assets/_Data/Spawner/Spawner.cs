@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class Spawner : KienroroMonobehavier
 {
@@ -9,6 +10,8 @@ public abstract class Spawner : KienroroMonobehavier
     [SerializeField] protected Transform holder;
     [SerializeField] protected List<Transform> poolObj;
     [SerializeField] protected int spawnerCount = 0;
+
+    public List<Transform> Prefabs => prefabs;
 
     public int SpawnerCount => spawnerCount;
 
@@ -58,12 +61,24 @@ public abstract class Spawner : KienroroMonobehavier
             return null;
         }
 
-        ;
+        return Spawn(prefab, spawnPos, rotation);
+    }
+    
+    public virtual Transform RandomPrefabs()
+    {
+        int ran = Random.Range(0, this.Prefabs.Count);
+        return this.Prefabs[ran];
+    }
+
+    public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation)
+    {
         Transform newPrefab = GetObjectFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
         newPrefab.SetParent(this.holder);
         return newPrefab;
     }
+
+    
 
     public virtual void Despawn(Transform obj)
     {

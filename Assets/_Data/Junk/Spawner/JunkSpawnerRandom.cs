@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class JunkSpawnerRandom : KienroroMonobehavier
 {
@@ -36,9 +37,12 @@ public class JunkSpawnerRandom : KienroroMonobehavier
         if (this.randomTimer < this.randomDelay) return;
         this.randomTimer = 0;
         Transform randomObj = this.junkSpawnerCtrl.SpawnPoint.GetRandom();
+        Transform junkObj = this.junkSpawnerCtrl.JunkSpawner.RandomPrefabs();
         Vector3 pos = randomObj.position;
         Quaternion rot = randomObj.rotation;
-        Transform obj = this.junkSpawnerCtrl.JunkSpawner.Spawn(JunkSpawner.meteoriteOne, pos, rot);
+        Transform obj = this.junkSpawnerCtrl.JunkSpawner.Spawn(junkObj, pos, rot);
         obj.gameObject.SetActive(true);
     }
+    
+    
 }

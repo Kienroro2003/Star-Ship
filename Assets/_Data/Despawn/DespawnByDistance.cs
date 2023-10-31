@@ -19,7 +19,6 @@ public class DespawnByDistance : Despawn
     {
         if (this.camera != null)
         {
-            Debug.Log("Camera is not found!!!");
             return;
         }
         this.camera = Transform.FindObjectOfType<Camera>().transform;
