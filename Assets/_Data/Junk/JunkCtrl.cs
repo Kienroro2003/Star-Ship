@@ -12,7 +12,7 @@ public class JunkCtrl : KienroroMonobehavier
     
     [SerializeField] protected JunkSO junkSO;
 
-    public JunkSO JunkSo => junkSO;
+    public JunkSO JunkSO => junkSO;
 
     protected override void LoadComponents()
     {

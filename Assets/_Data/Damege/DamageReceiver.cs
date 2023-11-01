@@ -61,5 +61,7 @@ namespace _Data.Damege
         }
 
         protected abstract void OnDead();
+        
+        
     }
 }

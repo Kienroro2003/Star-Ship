@@ -10,6 +10,13 @@ namespace _Data.Bullet
 
         public BulletDespawn BulletDespawn => bulletDespawn;
 
+        [SerializeField] protected Transform shooter;
+        public Transform Shooter
+        {
+            get => shooter;
+            set => shooter = value;
+        }
+
         public DamageSender DamageSender
         {
             get => damageSender;

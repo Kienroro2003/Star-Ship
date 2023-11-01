@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _Data.Damege
 {
-    [RequireComponent(typeof(SphereCollider))]
+    // [RequireComponent(typeof(SphereCollider))]
     public class DamageSender : KienroroMonobehavier
     {
         [SerializeField] protected float damage = 1;

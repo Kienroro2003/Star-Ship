@@ -32,8 +32,6 @@ public class GameController : KienroroMonobehavier
         this.LoadCamera();
     }
     
-    
-
     private void LoadCamera()
     {
         if (this.Camera != null) return;

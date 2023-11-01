@@ -21,19 +21,19 @@ public class ShipMovement : MonoBehaviour
         LookAtTarget();
     }
 
-    private void GetTargetPosition()
+    protected virtual void GetTargetPosition()
     {
         this.targetPosition = InputManager.Instance.MouseWorldPos;
         this.targetPosition.z = 0;
     }
 
-    private void Moving()
+    protected virtual void Moving()
     {
         Vector3 newPos = Vector3.Lerp(transform.parent.position, targetPosition, this.speed);
         transform.parent.position = newPos;
     }
 
-    private void LookAtTarget()
+    protected virtual void LookAtTarget()
     {
 
         Vector3 diff = this.targetPosition - transform.parent.position;

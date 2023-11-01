@@ -1,4 +1,5 @@
 using _Data.Damege;
+using _Data.Item;
 using UnityEngine;
 
 namespace _Data.Junk
@@ -23,7 +24,16 @@ namespace _Data.Junk
         protected override void OnDead()
         {
             this.OnDeadFX();
+            this.OnDeadDrop();
             this.junkCtrl.Despawn.DespawnObj();
+            
+        }
+
+        protected virtual void OnDeadDrop()
+        {
+            Vector3 pos = transform.parent.position;
+            Quaternion rot = transform.parent.rotation;
+            ItemDropSpawner.Instance.Drop(this.junkCtrl.JunkSO.dropList, pos, rot);
         }
 
         protected virtual void OnDeadFX()
@@ -40,7 +50,7 @@ namespace _Data.Junk
 
         public override void Reborn()
         {
-            this.maxHp = this.junkCtrl.JunkSo.hpMax;
+            this.maxHp = this.junkCtrl.JunkSO.hpMax;
             base.Reborn();
         }
     }

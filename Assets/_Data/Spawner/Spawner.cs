@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Data.Bullet;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -57,7 +58,7 @@ public abstract class Spawner : KienroroMonobehavier
 
         if (prefab == null)
         {
-            Debug.LogWarning("Prefab is not found!!! " + prefabName);
+            // Debug.LogWarning("Prefab is not found!!! " + prefabName); 
             return null;
         }
 

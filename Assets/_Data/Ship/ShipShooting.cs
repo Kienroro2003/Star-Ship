@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Data.Bullet;
 using UnityEngine;
 
 public class ShipShooting : MonoBehaviour
@@ -31,6 +32,8 @@ public class ShipShooting : MonoBehaviour
         Vector3 spawnPos = transform.position;
         Quaternion rotation = transform.parent.rotation;
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation);
+        BulletCtrl bulletCtrl = newBullet.GetComponent<BulletCtrl>();
+        bulletCtrl.Shooter = transform.parent;
         newBullet.gameObject.SetActive(true);
     }
 
